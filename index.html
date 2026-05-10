@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Deniz & Barış Nişan Davetiyesi</title>
+
+  <style>
+    @font-face {
+      font-family: "Isimler";
+      src: url("assets/fonts/isimler.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Ve";
+      src: url("assets/fonts/ve.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Metin";
+      src: url("assets/fonts/metin.woff") format("woff");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #f7f2ef;
+      --text: #252525;
+      --line: #2b2b2b;
+      --muted: #6f6a64;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      padding: 22px 16px 50px;
+      background: var(--bg);
+    }
+
+    .invite-card {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      min-height: 760px;
+      margin: 0 auto;
+      padding: 70px 30px 42px;
+      overflow: hidden;
+    }
+
+    .corner {
+      position: absolute;
+      width: 168px;
+      height: 168px;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .corner.top-left {
+      top: 40px;
+      left: 0;
+      border-top: 2px solid var(--line);
+      border-left: 2px solid var(--line);
+    }
+
+    .corner.bottom-right {
+      right: 0;
+      bottom: 8px;
+      border-right: 2px solid var(--line);
+      border-bottom: 2px solid var(--line);
+    }
+
+    .flower-art {
+      position: absolute;
+      top: 44px;
+      right: -10px;
+      width: 260px;
+      opacity: 0.55;
+      z-index: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .names {
+      margin-top: 100px;
+      margin-bottom: 92px;
+      color: var(--text);
+      font-family: "Isimler", serif;
+      font-size: 52px;
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: 1px;
+      text-align: left;
+    }
+
+    .names span {
+      display: block;
+    }
+
+    .names .amp {
+      display: block;
+      width: 100%;
+      font-family: "Ve", serif;
+      font-size: 0.90em;
+      line-height: 1;
+      margin: 22px 0 32px;
+      letter-spacing: 0;
+      text-align: left;
+    }
+
+    .invite-text {
+      max-width: 430px;
+      margin-bottom: 94px;
+      font-family: "Metin", serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.95;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+
+    .details {
+      max-width: 440px;
+      font-family: "Metin", serif;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 2.05;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .details .date {
+      margin-bottom: 20px;
+    }
+
+    .section {
+      width: 100%;
+      max-width: 520px;
+      margin: 38px auto 0;
+      padding: 0 4px;
+    }
+
+    .section-title {
+      margin-bottom: 14px;
+      font-family: "Metin", serif;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 5px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .section-desc {
+      max-width: 420px;
+      margin: 0 auto 22px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .map-box,
+    .form-box {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid rgba(43, 43, 43, 0.25);
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .map-box iframe {
+      display: block;
+      width: 100%;
+      height: 330px;
+      border: 0;
+    }
+
+    .form-box iframe {
+      display: block;
+      width: 100%;
+      min-height: 760px;
+      border: 0;
+      background: var(--white);
+    }
+
+    .buttons {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 15px 18px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      font-family: "Metin", serif;
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: 0.25s ease;
+    }
+
+    .btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .footer {
+      max-width: 520px;
+      margin: 42px auto 0;
+      padding-bottom: 24px;
+      color: var(--muted);
+      font-family: "Metin", serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 430px) {
+      .page {
+        padding: 18px 12px 42px;
+      }
+
+      .invite-card {
+        min-height: 720px;
+        padding: 62px 22px 36px;
+      }
+
+      .corner {
+        width: 132px;
+        height: 132px;
+      }
+
+      .corner.top-left {
+        top: 34px;
+      }
+
+      .corner.bottom-right {
+        bottom: 4px;
+      }
+
+      .flower-art {
+        top: 48px;
+        right: -34px;
+        width: 220px;
+      }
+
+      .names {
+        margin-top: 126px;
+        margin-bottom: 78px;
+        font-size: 48px;
+      }
+
+      .names .amp {
+        margin: 16px 0;
+        font-size: 0.6em;
+        text-align: left;
+      }
+
+      .invite-text {
+        margin-bottom: 76px;
+        font-size: 19px;
+        line-height: 1.9;
+        letter-spacing: 5.8px;
+      }
+
+      .details {
+        font-size: 15.5px;
+        line-height: 2;
+        letter-spacing: 4.4px;
+      }
+
+      .section-title {
+        font-size: 28px;
+        letter-spacing: 4px;
+      }
+
+      .form-box iframe {
+        min-height: 820px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .names {
+        font-size: 44px;
+      }
+
+      .invite-text {
+        font-size: 17px;
+        letter-spacing: 4.6px;
+      }
+
+      .details {
+        font-size: 14px;
+        letter-spacing: 3.8px;
+      }
+
+      .flower-art {
+        width: 200px;
+        right: -28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="page">
+
+    <section class="invite-card">
+      <div class="corner top-left"></div>
+      <div class="corner bottom-right"></div>
+
+      <img class="flower-art" src="assets/images/papatya.png" alt="">
+
+      <div class="content">
+        <h1 class="names">
+          <span>DENİZ</span>
+          <span class="amp">&amp;</span>
+          <span>BARIŞ</span>
+        </h1>
+
+        <p class="invite-text">
+          Nişan törenimizde sizleri de aramızda görmekten mutluluk duyacağız.
+        </p>
+
+        <div class="details">
+          <p class="date">13 Haziran 2026 Saat: 19:30</p>
+          <p>Alarga Balık Restoran</p>
+          <p>Basınköy Mah., Demiryolu Altgeçidi No:31,</p>
+          <p>Florya, Bakırköy</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Konum</h2>
+
+      <p class="section-desc">
+        Mekana kolayca ulaşmak için aşağıdaki haritayı kullanabilirsiniz.
+      </p>
+
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3012.208932192748!2d28.77592150000001!3d40.976905599999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa3d2eb353c8d%3A0x65882802445b70!2sAlarga%20Bal%C4%B1k!5e0!3m2!1str!2str!4v1778370481150!5m2!1str!2str" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+
+      <div class="buttons">
+        <a class="btn" href="https://www.google.com/maps/dir//Alarga+Bal%C4%B1k,+menekse+tren+istasyonu+alt%C4%B1,+Bas%C4%B1nk%C3%B6y,+Bas%C4%B1nk%C3%B6y+%C4%B0stanbul+Cd.+No%2F31,+34153+Bak%C4%B1rk%C3%B6y%2F%C4%B0stanbul/@40.9769056,28.7759215,17z/data=!4m17!1m7!3m6!1s0x14caa3d2eb353c8d:0x65882802445b70!2sAlarga+Bal%C4%B1k!8m2!3d40.9769056!4d28.7759215!16s%2Fg%2F1vv2pkrh!4m8!1m0!1m5!1m1!1s0x14caa3d2eb353c8d:0x65882802445b70!2m2!1d28.7759853!2d40.9769565!3e0?hl=tr&entry=ttu&g_ep=EgoyMDI2MDUwNi4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+          Yol Tarifi Al
+        </a>
+
+        <a class="btn" href="#rsvp">
+          LCV Formuna Git
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="rsvp">
+      <h2 class="section-title">LCV</h2>
+
+      <p class="section-desc">
+        Katılım durumunuzu aşağıdaki form üzerinden bize iletebilirsiniz.
+      </p>
+
+      <div class="form-box">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc5y_NKzxCOdLdL5hxGwtoer_dxohGWUDIUuJYJV1NTeIfdQA/viewform?embedded=true" width="640" height="627" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Deniz & Barış · 13 Haziran 2026
+    </footer>
+
+  </main>
+
+</body>
+</html>
